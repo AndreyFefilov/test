@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [
+const ROUTES: Routes = [
   {
     path: '',
     component: HomeComponent
@@ -17,7 +17,7 @@ const MODULES = [
 
 @NgModule({
   declarations: [HomeComponent],
-  imports: [...MODULES, RouterModule.forChild(routes)],
+  imports: [...MODULES, RouterModule.forChild(ROUTES)],
   exports: [RouterModule]
 })
 

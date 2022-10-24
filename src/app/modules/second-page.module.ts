@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ForgeService } from '../forge.service';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [
+const ROUTES: Routes = [
   {
     path: '',
     component: SecondPageComponent
@@ -20,7 +20,7 @@ const MODULES = [
 
 @NgModule({
   declarations: [SecondPageComponent],
-  imports: [...MODULES, RouterModule.forChild(routes)],
+  imports: [...MODULES, RouterModule.forChild(ROUTES)],
   exports: [RouterModule],
   providers: SERVICES
 })

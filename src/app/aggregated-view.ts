@@ -1,3 +1,2 @@
-export class AggregatedView extends Autodesk.Viewing.AggregatedView {
-
+export class AggregatedView extends Autobim.Viewing.AggregatedView {
 }
