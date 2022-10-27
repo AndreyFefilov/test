@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
-import { AggregatedView } from './aggregated-view';
+import type { AggregatedView } from './aggregated-view';
 
 Injectable()
 export class ForgeService {
-  aggregatedView: AggregatedView;
+  aggregatedView: AggregatedView | undefined;
 
   constructor() {
-    this.aggregatedView = new AggregatedView();
+    import('./aggregated-view').then(module => {
+      this.aggregatedView = new module.AggregatedView();
+      console.log(this.aggregatedView);
+    })
   }
 }

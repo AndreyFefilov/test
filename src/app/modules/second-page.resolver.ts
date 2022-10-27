@@ -1,25 +1,26 @@
 import { Injectable } from '@angular/core';
-import { Resolve } from '@angular/router';
+import { CanLoad } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Injectable()
-export class SecondPageResolver implements Resolve<boolean> {
+export class CanLoadSecondPage implements CanLoad {
   constructor() {}
 
-  resolve(): Observable<boolean> {
-    console.log('RESOLVE!');
+  canLoad(): Observable<boolean> {
+    return this.loadScript();
+  }
 
-    const script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = 'https://developer.api.autodesk.com/modelderivative/v2/viewers/7.79/viewer3D.min.js';
-    document.head.appendChild(script);
-
-    const obs = new Observable<boolean>(observer => script.onload = () => {
-      observer.next(true);
-      observer.complete();
+  loadScript(): Observable<boolean> {
+    return new Observable<boolean>(observer => {
+      const script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.src = 'https://developer.api.autodesk.com/modelderivative/v2/viewers/7.79/viewer3D.min.js';
+      document.head.appendChild(script);
+      script.onload = () => {
+        observer.next(true);
+        observer.complete();
+      };
     });
-
-    return obs;
   }
 }
 

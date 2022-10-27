@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CanLoadSecondPage } from './modules/second-page.resolver';
 
 const ROUTES: Routes = [
   {
@@ -13,7 +14,8 @@ const ROUTES: Routes = [
   },
   {
     path: 'second-page',
-    loadChildren: () => import('./modules/second-page.module').then(mod => mod.SecondPageModule)
+    loadChildren: () => import('./modules/second-page.module').then(mod => mod.SecondPageModule),
+    canLoad: [CanLoadSecondPage]
   },
 ];
 

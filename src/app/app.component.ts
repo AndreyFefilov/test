@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.router.events
-      .pipe(filter(event => event instanceof NavigationEnd),)
+      .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((event) => {
         if(event instanceof NavigationEnd ) {
           this.nextPage = event.urlAfterRedirects === '/home' ? 'Second page' : 'Home page';
